@@ -24,6 +24,10 @@
 #include <linux/scatterlist.h>
 #include <linux/interrupt.h>
 
+#define LK_VER_5_19 //Linux Kernel VERsion 5.19
+//changes made to: cdev_sgdma.c, libxdma.c
+
+
 /*
  * functions exported by the xdma driver
  */

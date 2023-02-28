@@ -33,6 +33,14 @@
 #include "xdma_thread.h"
 
 
+/*Changes for Linux kernel upgrade changes */
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0)
+#define pci_unmap_sg(a, b, c, d) dma_unmap_sg(&a->dev, b, c, d)
+#define pci_map_sg(a, b, c, d) dma_map_sg(&a->dev, b, c, d)
+#define pci_set_dma_mask(a, b) dma_set_mask(&a->dev, b)
+#define pci_set_consistent_dma_mask(a, b) dma_set_coherent_mask(&a->dev, b)
+#endif
+
 /* Module Parameters */
 static unsigned int poll_mode;
 module_param(poll_mode, uint, 0644);
